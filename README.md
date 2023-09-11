@@ -32,6 +32,7 @@ To run this project locally, you'll need Node.js and npm (Node Package Manager) 
 <h1>Docker</h1>
 <li>`docker-compose build`</li>
 <li>`docker-compose up`</li>
+and navigate to localhost:7000
 <h1>Contributing</h1>
 
 Contributions to this project are welcome! To contribute:
