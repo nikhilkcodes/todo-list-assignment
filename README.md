@@ -28,7 +28,6 @@ To run this project locally, you'll need Node.js and npm (Node Package Manager) 
   <li> Navigate to the project directory: </li> `cd todo-list-assignment`
   <li>`npm install`</li>
   <li>Build the TypeScript code to JavaScript:</li>  `npm run build`
-  <li>Change to the `dist` directory where the JavaScript files are stored: </li>  `npm run build`
 </ol>
 <h1>Docker</h1>
 <li>`docker-compose build`</li>
