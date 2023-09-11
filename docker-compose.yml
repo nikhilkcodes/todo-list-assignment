@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  node-app:
+    restart: always
+    build: .
+    environment:
+      - MONGODB_URL=mongodb://mongo_db:27017/tasks
+    ports:
+      - '7000:7000'
+    depends_on:
+      - mongo_db
+    volumes:
+      - .:/src
+    networks:
+      - node-network
+
+  mongo_db:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+    networks:
+      - node-network
+
+volumes:
+  dbdata6:
+networks:
+  node-network:
+    driver: bridge

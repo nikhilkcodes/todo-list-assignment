@@ -1,0 +1,194 @@
+<html>
+    
+<head>
+  <title>
+
+    <%= title %>
+
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!--google fonts link-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Urbanist&display=swap" rel="stylesheet">
+  <!-- font awesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./style.css"
+  <script src=" https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="social-media">
+    <h3> <i class="fa-regular fa-copyright"></i> Nikhil Singh </h3>
+    <a href="https://github.com/nikhilkcodes"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/nikhil-singh-in/"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://twitter.com/mainikhilhun"><i class="fa-brands fa-x-twitter"></i></a>
+  </div>
+    <input type="checkbox" id="dark-mode-toggle">
+   <label for="dark-mode-toggle">
+    <div id="star">
+      <div class="star" id="star-1">★</div>
+      <div class="star" id="star-2">★</div>
+    </div>
+    <div id="moon"></div>
+  </label> 
+  <br>
+     <h1 align="center">To do app with dark mode</h2>
+     <br>
+
+    <section class="container">
+      <h1 align="center">Add Your Task</h1>
+  
+      <!-- form to create task -->
+      <form action="/create-task" method="POST">
+  
+        <table class="table">
+          <thead>
+            <tr class="table-active">
+              <th>Add Task</th>
+              <th>category</th>
+              <th>date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+  
+  
+          <tbody>
+            <tr>
+              <td> <input type="text" name="description" placeholder="What do you need to do?" required></input></th>
+              <td> <select name="category" required>
+  
+                  <option>PERSONAL</option>
+                  <option>WORK</option>
+                  <option>SCHOOL</option>
+                  <option>CLEANING</option>
+                  <option>OTHER</option>
+                </select></th>
+              <td> <input type="date" name="date" required></th>
+              <td><input type="submit" class="btn btn-success" id="add" value="ADD TASK"></th>
+            </tr>
+          </tbody>
+  
+        </table>
+  
+      </form>
+    </section>
+  <br>
+  <div class="task-list">
+    <h1 align="center">TASK LIST</h1>
+
+    <form action="/delete-task" method="GET">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Task</th>
+            <th>Category</th>
+            <th>due date</th>
+          </tr>
+        </thead>
+        <% for(let i of task) { %>
+
+
+          <tr>
+
+            <td> <input type="checkbox" name="<%= i._id %>"></td>
+            <td>
+              <p id="task-description">
+                <%= i.description %>
+            </td>
+            <td>
+              <p id="task-category"></p>: <%= i.category %>
+            </td>
+            <td>
+              <p id="due-date">: <%= i.date %>
+              </p>
+            </td>
+          </tr>
+
+
+          <% } %>
+
+      </table>
+      <div align="center"><input type="submit" class="btn btn-danger btn-lg" value="DELETE TASK">
+      </div>
+    </form>
+
+  </div>
+  <script>
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const container = document.querySelector('.container'); // Get the container element
+      const wokList = document.querySelector('.wok-list'); // Get the wok-list element
+      const tableRows = document.querySelectorAll('tr.table-active'); // Get all <tr> elements with the class "table-active"
+      const categoryText = document.querySelectorAll('.category'); // Get all elements with the class "category"
+  
+      body.classList.toggle('dark-mode');
+      
+      // Check if dark mode is enabled
+      const isDarkModeEnabled = body.classList.contains('dark-mode');
+      
+      // Update the wok-list background color based on dark mode status
+      if (isDarkModeEnabled) {
+        container.style.backgroundColor = '#445069'; // Change to your desired background color
+        wokList.style.backgroundColor = 'white'; // Change to your desired background color
+        // Change the text color of the table rows to black
+        tableRows.forEach(row => {
+          row.style.color = 'black';
+        });
+        // Change the text color of the category class to white
+        categoryText.forEach(text => {
+          text.style.color = 'white';
+        });
+      } else {
+        container.style.backgroundColor = 'white'; // Change to your desired background color
+        wokList.style.backgroundColor = 'black'; // Change to your desired background color
+        // Change the text color of the table rows to white
+        tableRows.forEach(row => {
+          row.style.color = 'white';
+        });
+        // Change the text color of the category class to black
+        categoryText.forEach(text => {
+          text.style.color = 'black';
+        });
+      }
+  
+      // Store the user's preference in localStorage
+      localStorage.setItem('darkModeEnabled', isDarkModeEnabled);
+    }
+  
+    // Event listener for the toggle button
+    const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
+    if (darkModeToggleBtn) {
+      darkModeToggleBtn.addEventListener('click', toggleDarkMode);
+    }
+  
+    // Check if the user's preference is stored in localStorage
+    const storedDarkMode = localStorage.getItem('darkModeEnabled');
+    if (storedDarkMode === 'true') {
+      document.body.classList.add('dark-mode');
+      const container = document.querySelector('.container');
+      container.style.backgroundColor = 'black'; // Change to your desired background color
+      const wokList = document.querySelector('.wok-list');
+      wokList.style.backgroundColor = 'white'; // Change to your desired background color
+      const tableRows = document.querySelectorAll('tr.table-active');
+      // Change the text color of the table rows to black
+      tableRows.forEach(row => {
+        row.style.color = 'black';
+      });
+      const categoryText = document.querySelectorAll('.category');
+      // Change the text color of the category class to white
+      categoryText.forEach(text => {
+        text.style.color = 'white';
+      });
+    }
+  </script>
+  
+  
+  
+  
+</body>
+
+</html>

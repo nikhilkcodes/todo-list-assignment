@@ -1,0 +1,286 @@
+/* for whole conatiner */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* root tag for all element */
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  /* main body part */
+  body {
+    margin: 20px;
+    background: #0f2027; /* fallback for old browsers */
+    background: #0f2027;
+    background: -webkit-linear-gradient(to right, #E3F4F4, #D2E9E9, #C4DFDF);
+    background: linear-gradient(to right,  #E3F4F4, #D2E9E9, #C4DFDF);
+    color: #333; /* Text color in light mode */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Urbanist', sans-serif;
+    font-size: x-large;
+  }
+  .social-media{
+     text-align: center;
+     font-size: xx-large;
+  }
+  @media (prefers-color-scheme: dark) {
+    body.dark-mode {
+      background: #121212; /* Dark background color */
+      /* Text color in dark mode */
+    }
+
+    body.dark-mode h1 {
+      color: #fff; /* Text color for h1 in dark mode */
+    }
+    body.dark-mode th {
+      color: #fff; /* Text color for table headers in dark mode */
+    }
+    
+    /* Update table cell text color for dark mode */
+    body.dark-mode td {
+      color: #fff; /* Text color for table cells in dark mode */
+    }
+
+  }
+    
+  /* h1 style */
+  h1 {
+    font-size: 3rem;
+    font-weight :bold;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  input[type="text"] {
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+  
+  /* styling all label  */
+  label {
+    display: block;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
+  
+  /* styling all container */
+  .container {
+     padding: 20px;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 60px;
+  }
+  .container::placeholder{
+    font-weight: bold;
+  }
+
+  .col-1-of-2 {
+    width: 50%;
+  }
+  
+  .col-1-of-1 {
+    width: 100%;
+  }
+  
+  /* select for all */
+  select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  #add{
+    width: 100px; 
+    height: 30px; 
+    font-size: medium;
+  }
+  #date {
+    width: 130px; 
+    height: 30px; 
+    border-radius: 5px;
+  }
+
+  /* button style for add and delete */
+  button {
+    display: inline-block;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  /* style for add button */
+  button:nth-of-type(1) {
+    background-color: grey;
+  }
+  
+  button:nth-of-type(1):hover {
+    background-color: black;
+  }
+  
+  /* style for delete button */
+  button:nth-of-type(2) {
+    background-color: #bd4545;
+  }
+  
+  button:nth-of-type(2):hover {
+    background-color: red;
+  }
+  
+  [class^="col-"] {
+    padding: 2rem;
+  }
+  
+  [class^="col-"]:hover {
+    background-color: grey;
+  }
+  
+  /* for all li elements */
+  li {
+    padding: 20px;
+    font-size: 1rem;
+    position: relative;
+    border-top: 1px solid gray;
+    transition: all 1s;
+  }
+  
+  /* for selecting elements whose class attribute is todo__description */
+  [class="todo__description"] {
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+  
+  /* for selecting elements whose class attribute is todo__category */
+  [class^="todo__category"] {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 0.6rem;
+    color: black;
+    position: absolute;
+    right: 2rem;
+    top: 1.15rem;
+  }
+  
+  /* for selecting elements whose class attribute is todo__description */
+  .todo__dueDate {
+    display: block;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+  }
+  
+
+#dark-mode-toggle {
+  display: none;
+}
+
+label {
+  display: block;
+  position: fixed;
+  bottom: 0; /* Place at the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: 116px;
+  height: 56px;
+  background-color: #77b5fe;
+  border-radius: 56px;
+  cursor: pointer;
+  transition: 0.3s ease background-color;
+  overflow: hidden;
+}
+
+#star {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  width: 30px;
+  height: 30px;
+  background-color: #fafd0f;
+  transform: scale(1);
+  border-radius: 50%;
+  transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
+  z-index: 1;
+}
+
+#star-1 {
+  position: relative;
+}
+
+#star-2 {
+  position: absolute;
+  transform: rotateZ(36deg);
+}
+
+.star {
+  top: 0;
+  left: -7px;
+  font-size: 54px;
+  line-height: 28px;
+  color: #fafd0f;
+  transition: 0.3s ease color;
+}
+
+#moon {
+  position: absolute;
+  bottom: -52px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.3s ease bottom;
+}
+
+#moon:before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -17px;
+  width: 40px;
+  height: 40px;
+  background-color: #03a9f4;
+  border-radius: 50%;
+  transition: 0.3s ease background-color;
+}
+
+#dark-mode-toggle:checked + label {
+  background-color: #000;
+  bottom: 8px;
+}
+
+#dark-mode-toggle:checked + label #star {
+  top: 3px;
+  left: 50%;
+  transform: scale(0.3);
+  background-color: yellow;
+}
+
+#dark-mode-toggle:checked + label .star {
+  color: yellow;
+}
+
+#dark-mode-toggle:checked + label #moon {
+  bottom: 8px;
+}
+
+#dark-mode-toggle:checked + label #moon:before {
+  background-color: #000;
+}
